@@ -1,11 +1,11 @@
 {
-  "name": "couch-habits-landing",
+  "name": "couchday-landing",
   "version": "1.0.0",
-  "description": "Landing page for Couch Habits app",
+  "description": "Landing page for Couchday app",
   "scripts": {
-    "build": "mkdir -p dist && cp index.html dist/ && cp CouchHabits-hero.png dist/"
+    "build": "mkdir -p dist && cp index.html dist/ && cp Couchday-hero.png dist/"
   },
-  "keywords": ["landing-page", "habit-tracker"],
+  "keywords": ["landing-page", "day-planner"],
   "author": "",
   "license": "ISC"
 }
