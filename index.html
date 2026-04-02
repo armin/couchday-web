@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couchday — The Gentle Day Planner</title>
+    <meta name="description" content="Plan your day like a playlist. No pressure. No guilt. A gentle day planner that flows with your life — not against it.">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Couchday — The Gentle Day Planner">
+    <meta property="og:description" content="Plan your day like a playlist. No pressure. No guilt.">
+    <meta property="og:image" content="https://couchday.app/og-image.png">
+    <meta property="og:url" content="https://couchday.app">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%) fixed;
+            background-color: #1A1A2E;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 100px 0;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease both;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #ff9f7f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero .subheadline {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #0a0a0f;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        .app-store-badge {
+            margin-top: 24px;
+        }
+
+        .app-store-badge img {
+            width: 200px;
+            height: auto;
+        }
+
+        .hero-image {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 600px;
+            border-radius: 42px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 100px rgba(255, 139, 95, 0.2),
+                0 0 150px rgba(255, 139, 95, 0.15);
+            animation: fadeInUp 1s ease 0.8s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.7),
+                0 0 120px rgba(255, 139, 95, 0.4),
+                0 0 180px rgba(255, 139, 95, 0.25);
+        }
+
+        /* Problem Section */
+        .problem, .solution {
+            text-align: center;
+        }
+
+        .problem {
+            background-color: #1a1a2e;
+            border-radius: 24px;
+            padding: 80px 40px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .body-text {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(255, 139, 95, 0.15),
+                0 0 120px rgba(255, 139, 95, 0.1);
+            position: relative;
+        }
+
+        .screenshot-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(255, 139, 95, 0.2), rgba(255, 179, 135, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot-placeholder:hover::before {
+            opacity: 1;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #0a0a0f;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            background-color: #1a1a2e;
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 16px;
+        }
+
+        /* Who It's For Section */
+        .who-its-for {
+            text-align: center;
+        }
+
+        .who-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+
+        .who-list li {
+            padding: 16px 0;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .who-list li:before {
+            content: "✓ ";
+            color: #ff8b5f;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            text-align: center;
+        }
+
+        .screenshots-container {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .screenshots-container .screenshot-placeholder {
+            max-width: 280px;
+        }
+
+        .screenshots-caption {
+            margin-top: 32px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.55);
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: #0a0a0f;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+        }
+
+        .faq-answer a {
+            color: #ff8b5f;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .faq-answer a:hover {
+            color: #ffab8f;
+        }
+
+        .faq-widget-img {
+            margin-top: 16px;
+            max-width: 200px;
+            border-radius: 16px;
+        }
+
+        .faq-contact {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        /* Download CTA Section */
+        .download-cta {
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+            border-radius: 24px;
+            padding: 80px 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-tagline {
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animations & Effects */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Scroll-triggered reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children animations */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger-children.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-children.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-children.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-children.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-children.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-children.active > *:nth-child(6) { transition-delay: 0.6s; }
+
+        .stagger-children.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax background elements */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #ff8b5f, transparent);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff6b3f, transparent);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #ffab7f, transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        /* Hero animation */
+        .hero-title, .hero h1, .hero .subheadline, .hero .cta-button, .hero .app-store-badge {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-title {
+            animation-delay: 0s;
+            animation-fill-mode: both;
+        }
+
+        .hero h1 {
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .hero .subheadline {
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .hero .app-store-badge {
+            animation-delay: 0.6s;
+            animation-fill-mode: both;
+        }
+
+        /* Feature cards hover effect */
+        .feature-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: default;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(255, 139, 95, 0.2);
+            border-color: rgba(255, 139, 95, 0.3);
+        }
+
+        /* Screenshot parallax */
+        .screenshot-parallax {
+            transition: transform 0.3s ease;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Problem section entrance */
+        .problem {
+            transition: transform 0.3s ease;
+        }
+
+        .problem:hover {
+            transform: scale(1.02);
+        }
+
+        /* Who list items reveal */
+        .who-list li {
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .who-list li:hover {
+            background-color: rgba(255, 139, 95, 0.1);
+            padding-left: 16px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero-title-container {
+                gap: 16px;
+                margin-bottom: 24px;
+            }
+
+            .hero-icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 15px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subheadline {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .body-text {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem, .download-cta {
+                padding: 60px 24px;
+            }
+
+            .gradient-orb {
+                filter: blur(80px);
+            }
+
+            .orb-1, .orb-2, .orb-3 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-image {
+                margin-top: 40px;
+            }
+
+            .hero-image img {
+                max-height: 400px;
+                border-radius: 24px;
+            }
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Background -->
+    <div class="parallax-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="icon.png" alt="Couchday" class="logo-icon">
+                <span>Couchday</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-title-container">
+                <img src="icon.png" alt="Couchday Icon" class="hero-icon">
+                <div class="hero-title">Couchday</div>
+            </div>
+            <h1>Plan your day like a playlist.</h1>
+            <p class="subheadline">A gentle day planner that flows with your life — not against it.</p>
+            <div class="app-store-badge">
+                <a href="https://apps.apple.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="Couchday-hero.png" alt="Couchday App Interface">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section>
+        <div class="container">
+            <div class="problem reveal">
+                <h2>You've tried planning your day before.</h2>
+                <p class="body-text">
+                    The rigid time-blockers. The colour-coded calendars. The apps that made you feel worse when your day didn't go to plan.
+                    <br><br>
+                    Days don't go to plan. That's fine.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container reveal">
+            <h2>Couchday is different.</h2>
+            <p class="body-text">
+                Your timeline is alive — it moves with you. Things shift, things change, and your day gently adjusts. No guilt. No starting over. Just pick up where you are.
+            </p>
+            <div class="solution-content">
+                <div class="hero-image screenshot-parallax">
+                    <img src="Couchday-hero.png" alt="Couchday living timeline">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 style="text-align: center;" class="reveal">Everything flows.</h2>
+            <div class="features-grid stagger-children">
+                <div class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <h3>Liquid Glass</h3>
+                    <p>Built with Apple's latest design language. Every surface shimmers with depth and light.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Living timeline</h3>
+                    <p>Your day auto-adjusts around fixed events. Plans change — your timeline keeps up.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>Widgets</h3>
+                    <p>See your day at a glance from your Home Screen and Lock Screen.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Live Activities</h3>
+                    <p>Track what's happening now on your Lock Screen and Dynamic Island.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">☁️</div>
+                    <h3>iCloud Sync</h3>
+                    <p>Pick up where you left off on iPhone, iPad, or Mac. Everything stays in sync.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendar integration</h3>
+                    <p>Your existing events flow right into your timeline. One place for everything.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section class="who-its-for">
+        <div class="container reveal">
+            <h2>Built for real life.</h2>
+            <ul class="who-list stagger-children">
+                <li>People who've quit every other planner app</li>
+                <li>Overthinkers who freeze when the day feels too big</li>
+                <li>ADHD and neurodivergent brains</li>
+                <li>Anyone who wants structure without rigidity</li>
+                <li>People tired of feeling bad when plans fall apart</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container reveal">
+            <div class="screenshots-container stagger-children">
+                <div class="hero-image screenshot-parallax">
+                    <img src="Couchday-widgets.png" alt="Couchday Widgets">
+                </div>
+
+                <div class="hero-image screenshot-parallax">
+                    <img src="Couchday-checklist.png" alt="Couchday Live Activities">
+                </div>
+
+            </div>
+            <p class="screenshots-caption">Your day, wherever you look.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 style="text-align: center;" class="reveal">Frequently Asked Questions</h2>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <h3 class="faq-question">What is Couchday?</h3>
+                    <p class="faq-answer">Couchday is a gentle day planner for people who want structure without the stress. Plan your day like a playlist — add what feels right, skip what doesn't, and let the timeline handle the rest.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How is this different from other planner apps?</h3>
+                    <p class="faq-answer">Most planners punish you when things don't go to plan. Couchday doesn't. Your timeline is alive — it auto-adjusts around fixed events and flows with your day. No rigid time blocks. No guilt when things shift.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is it free?</h3>
+                    <p class="faq-answer">Couchday is free to use with all core features included.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Does it sync across devices?</h3>
+                    <p class="faq-answer">Yes. Couchday uses iCloud to seamlessly sync across iPhone, iPad, and Mac. Pick up exactly where you left off.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Does it work with my calendar?</h3>
+                    <p class="faq-answer">Yes. Couchday integrates with Apple Calendar so your existing events flow naturally into your timeline — no double entry.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What are Live Activities?</h3>
+                    <p class="faq-answer">Live Activities let you see your current activity on your Lock Screen and Dynamic Island in real time — so you always know what's happening without opening the app.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is there a widget?</h3>
+                    <p class="faq-answer">Yes — Home Screen and Lock Screen widgets in multiple sizes. See your day at a glance without opening the app.</p>
+                    <img src="Couchday-widget-preview.png" alt="Couchday iOS widgets showing day timeline" class="faq-widget-img">
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What happens if my day falls apart?</h3>
+                    <p class="faq-answer">Nothing bad. Your timeline adjusts. Missed something? It's gone — no red marks, no shaming. Just carry on from where you are.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What is Liquid Glass?</h3>
+                    <p class="faq-answer">Liquid Glass is Apple's latest design language, introduced in iOS 26. Couchday is built from the ground up with it — bringing stunning depth, translucency, and a polished feel to every screen.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is it available on Android?</h3>
+                    <p class="faq-answer">Couchday is exclusive to Apple platforms — iPhone, iPad, and Mac.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I contact support?</h3>
+                    <p class="faq-answer"><a href="https://quantifyapp.com/index.php/couch-support/">Contact us here</a></p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Who made this?</h3>
+                    <p class="faq-answer">Couchday is made by an indie developer who believes your day is already good enough. Built with care, from the couch.</p>
+                </div>
+                <div class="faq-item faq-contact">
+                    <h3 class="faq-question">Still have questions?</h3>
+                    <p class="faq-answer"><a href="hhttps://quantifyapp.com/index.php/couch-support/">Reach out here</a> — we'd love to hear from you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section id="download">
+        <div class="container">
+            <div class="download-cta reveal">
+                <h2>Your day doesn't have to be perfect. It just has to be yours.</h2>
+                <div style="margin-top: 40px;">
+                    <div class="app-store-badge">
+                        <a href="https://apps.apple.com/app/YOUR_APP_ID" target="_blank" rel="noopener">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-tagline">Made with care from the couch 🛋️</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://quantifyapp.com/index.php/couch-support/">Contact</a>
+            </div>
+            <p>&copy; 2026 Couchday</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll-triggered reveals
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Observe stagger children containers
+        document.querySelectorAll('.stagger-children').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Parallax effect for gradient orbs
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateParallax() {
+            const scrollY = window.scrollY;
+            const orbs = document.querySelectorAll('.gradient-orb');
+
+            orbs.forEach((orb, index) => {
+                const speed = 0.3 + (index * 0.1);
+                const yPos = -(scrollY * speed);
+                orb.style.transform = `translateY(${yPos}px)`;
+            });
+
+            ticking = false;
+        }
+
+        function requestParallaxUpdate() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add gentle mouse parallax to hero section
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { innerWidth, innerHeight } = window;
+
+                const xPos = (clientX - innerWidth / 2) / innerWidth;
+                const yPos = (clientY - innerHeight / 2) / innerHeight;
+
+                const orb1 = document.querySelector('.orb-1');
+                const orb2 = document.querySelector('.orb-2');
+
+                if (orb1) orb1.style.transform = `translate(${xPos * 30}px, ${yPos * 30}px)`;
+                if (orb2) orb2.style.transform = `translate(${-xPos * 20}px, ${-yPos * 20}px)`;
+            });
+        }
+
+        // Initial parallax position
+        updateParallax();
+    </script>
+</body>
+</html>

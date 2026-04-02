@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Couch Habits</title>
+    <meta name="description" content="Privacy Policy for Couch Habits - The gentle habit tracker for iPhone.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Content */
+        .content {
+            padding: 80px 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 48px;
+        }
+
+        .short-version {
+            background-color: #1a1a2e;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .short-version h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .short-version p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 16px 0 24px 0;
+        }
+
+        ul li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            color: #6c63ff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 48px 0;
+        }
+
+        a {
+            color: #6c63ff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #8b83ff;
+        }
+
+        .tagline {
+            text-align: center;
+            margin-top: 48px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-tagline {
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Parallax background elements */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #6c63ff, transparent);
+            top: 10%;
+            right: 10%;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #4c52ff, transparent);
+            bottom: 20%;
+            left: 5%;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .content {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .short-version {
+                padding: 24px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .gradient-orb {
+                filter: blur(80px);
+            }
+
+            .orb-1, .orb-2 {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Background -->
+    <div class="parallax-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="icon.png" alt="Couch Habits" class="logo-icon">
+                <span>Couch Habits</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Last updated: January 2026</p>
+
+            <div class="short-version">
+                <h2>The Short Version</h2>
+                <p>Couch Habits is designed with your privacy in mind. Your habit data stays on your device. We use privacy-friendly analytics to understand how the app is used, but we never see your personal information or habit data.</p>
+            </div>
+
+            <hr>
+
+            <h2>What We Collect</h2>
+
+            <h3>Habit Data</h3>
+            <p>Your habits, streaks, and history are stored only on your iPhone using Apple's on-device storage. We never see this data. We can't access it. It's yours.</p>
+
+            <h3>Analytics</h3>
+            <p>We collect anonymous usage analytics to understand how the app is used so we can make it better.</p>
+
+            <p>We collect:</p>
+            <ul>
+                <li>App version</li>
+                <li>Device type and iOS version</li>
+                <li>General usage patterns (e.g., which screens are viewed)</li>
+                <li>Crash reports</li>
+            </ul>
+
+            <p>We do <strong>not</strong> collect:</p>
+            <ul>
+                <li>Your name, email, or any personal information</li>
+                <li>Your habit names or data</li>
+                <li>Your location</li>
+                <li>Any data that could identify you personally</li>
+            </ul>
+
+            <p>Our analytics are privacy-first, anonymous by design, and cannot be used to track you across apps.</p>
+
+            <hr>
+
+            <h2>Data Storage</h2>
+            <p>Your habit data is stored locally on your device. We never see it, and it never leaves your phone.</p>
+            <p>If you delete the app, your data is deleted with it.</p>
+
+            <hr>
+
+            <h2>Third-Party Services</h2>
+            <p>We use a privacy-focused analytics service to collect anonymous usage data. We do not use advertising networks or sell your data to anyone.</p>
+
+            <hr>
+
+            <h2>Future Features</h2>
+            <p>If we add features that involve additional data collection in the future (such as iCloud sync or AI-powered suggestions), we will:</p>
+            <ul>
+                <li>Update this privacy policy</li>
+                <li>Clearly explain what data is involved</li>
+                <li>Make those features optional</li>
+            </ul>
+
+            <hr>
+
+            <h2>Children's Privacy</h2>
+            <p>Couch Habits does not knowingly collect any personal information from children under 13. The analytics we collect are anonymous and cannot identify individual users of any age.</p>
+
+            <hr>
+
+            <h2>Your Choices</h2>
+            <p>Our analytics are anonymous by design. If you prefer, you can limit device analytics in iOS Settings</p>
+
+            <hr>
+
+            <h2>Changes to This Policy</h2>
+            <p>If we make changes to this privacy policy, we will update the "Last updated" date at the top of this page.</p>
+
+            <hr>
+
+            <h2>Contact</h2>
+            <p>Questions about this privacy policy? <a href="https://quantifyapp.com/index.php/couch-support/">Contact us</a></p>
+
+            <p class="tagline">Made with passion from the couch. 🛋️</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-tagline">Made with passion from the couch 🛋️</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="https://quantifyapp.com/index.php/couch-support/">Contact</a>
+            </div>
+            <p>&copy; 2026 Couch Habits</p>
+        </div>
+    </footer>
+</body>
+</html>
