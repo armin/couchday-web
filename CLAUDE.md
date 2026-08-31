@@ -4,15 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Landing page for **Couchday** — a gentle iOS/macOS day planner app. The site is a static HTML/CSS/JS site deployed to Cloudflare via Wrangler.
+Landing page for **Couchday** — a gentle iOS/macOS day planner app. The site is a static HTML/CSS/JS site deployed to Cloudflare, live at [couchday.app](https://couchday.app).
 
 ## Deployment
 
+**Pushing to `main` deploys the site.** Cloudflare's Git integration builds and
+publishes automatically — no manual step, and nothing else is needed to go live.
+
 ```bash
-npx wrangler deploy    # deploy to Cloudflare Workers (static assets)
+git push origin main    # this is the deploy
 ```
 
-The `wrangler.jsonc` config serves the entire repo root as static assets (`"directory": "."`). The `_headers` file controls HTTP response headers for caching and security.
+Do **not** reach for `npx wrangler deploy`. The stored wrangler OAuth token is
+long expired and won't refresh non-interactively, so it fails; its suggested
+`--temporary` flag is worse, publishing to a throwaway account under a different
+URL instead of updating the real site. If a direct deploy is ever genuinely
+needed, re-auth first with `npx wrangler login`.
+
+The `wrangler.jsonc` config serves the entire repo root as static assets
+(`"directory": "."`). The `_headers` file controls HTTP response headers for
+caching and security. URLs are served without the `.html` extension —
+`/couchday-privacy.html` redirects (307) to `/couchday-privacy`.
+
+To confirm a deploy landed, fetch the live page and check for the changed text
+rather than only the absence of the old text (an error page also lacks it).
 
 ## Structure
 
@@ -25,8 +40,3 @@ The `wrangler.jsonc` config serves the entire repo root as static assets (`"dire
 ## Design system
 
 Dark theme (`#0a0a0f` background, white text). Accent color is warm orange (`#ff8b5f`). All CSS is inline in `index.html`. Scroll-triggered animations use `IntersectionObserver` with `.reveal` and `.stagger-children` classes. Parallax background uses floating gradient orbs.
-
-## Notes
-
-- The App Store link in `index.html` still uses the placeholder `YOUR_APP_ID` — update when the app is live.
-- Images referenced in HTML (e.g. `Couchday-timeline.png`, `Couchday-widgets.png`, `Couchday-activities.png`, `Couchday-widget-preview.png`) may not all exist in the repo yet.
